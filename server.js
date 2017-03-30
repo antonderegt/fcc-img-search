@@ -3,7 +3,7 @@
 const express = require("express")
 const mongo = require("mongodb")
 const path = require('path')
-// const api = require("./api.js")
+const api = require("./api.js")
 
 var app = express()
 
@@ -19,7 +19,7 @@ mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017
       res.sendFile(path.join(__dirname, './index.html'))
   })
   
-//   api(app, db)
+  api(app, db)
   
 })
 

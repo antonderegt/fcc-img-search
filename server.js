@@ -5,9 +5,13 @@ const mongo = require("mongodb")
 const path = require('path')
 const api = require("./api.js")
 
+require('dotenv').config({
+  silent: true
+});
+
 const app = express()
 
-mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shortener', (err, db) => {
+mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/images', (err, db) => {
 
   if (err) {
     throw new Error('Database failed to connect!');

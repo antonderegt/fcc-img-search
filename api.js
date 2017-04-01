@@ -2,8 +2,8 @@
 
 module.exports = (app, db) => {
 const request = require('request')
-const CX = '002962581167205362641:hbbgdalzyts'
-const API_KEY = 'AIzaSyCVob1WbUVN8iElaZ0PIbBCSPliegGAtDw'
+const CX = process.env.CX
+const API_KEY = process.env.API_KEY
 
 const getApiData = (req, res, query, offset) => {
   request.get('https://www.googleapis.com/customsearch/v1?key=' + API_KEY + '&cx=' + CX + '&searchType=image&q=' + query +'&start=' + offset, 

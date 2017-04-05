@@ -11,11 +11,6 @@ require('dotenv').config({
 
 const app = express()
 
-app.use((req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-});
-
 mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/images', (err, db) => {
 
   if (err) {
@@ -23,6 +18,12 @@ mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017
   } else {
     console.log('Successfully connected to MongoDB on port 27017.');
   }
+  
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
   
   app.get('/', (req, res) => {
       res.sendFile(path.join(__dirname, './index.html'))

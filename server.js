@@ -36,8 +36,3 @@ mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017
 app.listen(process.env.PORT || 8080, () => {
   console.log('Server listening...')
 })
-
-// app.set('port', (process.env.PORT || 8080))
-// const server = app.listen(app.get('port'), () => {
-//   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env)
-// })

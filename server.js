@@ -11,6 +11,11 @@ require('dotenv').config({
 
 const app = express()
 
+app.use((req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
+
 mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/images', (err, db) => {
 
   if (err) {
